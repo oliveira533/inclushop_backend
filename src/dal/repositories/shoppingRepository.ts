@@ -21,4 +21,17 @@ export class ShoppingRepository{
             throw error
         }
     }
+
+    async getShoppingInfos(shopping: string){
+        try{
+            const documents: shoppingType[] = await this.db.query([where("shopping", "==", shopping)]);
+            if(!documents){
+                return {};
+            }
+
+            return documents[0];
+        }catch(error){
+            throw error
+        }
+    }
 }

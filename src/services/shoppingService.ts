@@ -22,4 +22,16 @@ export class ShoppingService{
             throw error
         }
     }
+
+    async getShopping(shoppingId: string): Promise<shoppingType | null> {
+        try {
+            const dbResponse = await this.db.getShoppingInfos(shoppingId);
+            if (!dbResponse) {
+                return null;
+            }
+            return dbResponse as shoppingType;
+        } catch (error) {
+            throw error;
+        }
+    }
 }
