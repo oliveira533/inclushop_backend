@@ -24,14 +24,19 @@ export class ShoppingRepository{
 
     async getShoppingInfos(shopping: string){
         try{
+            if (!shopping || typeof shopping !== 'string') {
+                throw new Error('Invalid CEP: must be a non-empty string');
+            }
+
             const documents: shoppingType[] = await this.db.query([where("cep", "==", shopping)]);
-            if(!documents){
+            if(!documents || documents.length === 0){
                 return {};
             }
 
             return documents[0];
         }catch(error){
-            throw error
+            console.error('Error in getShoppingInfos:', error);
+            throw error;
         }
     }
 }
