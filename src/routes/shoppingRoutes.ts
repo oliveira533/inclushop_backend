@@ -13,6 +13,6 @@ shoppingRoute.post("/new/shopping",(req: Request, res: Response, next: NextFunct
     controller.createShopping(req, res, next);
 })
 
-shoppingRoute.post("/shopping/info/:shopping",(req: Request, res: Response, next: NextFunction)=>{
+shoppingRoute.get("/shopping/info/:shopping",(req: Request, res: Response, next: NextFunction)=>{
     controller.createShopping(req, res, next);
 })
